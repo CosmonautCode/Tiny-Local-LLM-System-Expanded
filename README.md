@@ -1,11 +1,11 @@
-# Tiny Local LLM System
+# Tiny Local Agents LLM System
 
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://github.com/yourusername/local-llm-system)
 [![Made with UV](https://img.shields.io/badge/made%20with-uv-ff69b4.svg)](https://github.com/astral-sh/uv)
 
-A **lightweight, self-contained** Python project for running a local large language model (LLM) with minimal dependencies. This system uses **[TinyLlama-1.1B-Chat-v1.0.0](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0.0-GGUF)** and **[llama-cpp-python](https://github.com/abetlen/llama-cpp-python)** for inference, and **[Rich](https://github.com/Textualize/rich)** for a **user-friendly console chat interface**.
+A **lightweight, self-contained** Python project for running custom local large language model (LLM) personalities with minimal dependencies. This system uses **[TinyLlama-1.1B-Chat-v1.0.0](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0.0-GGUF)** and **[llama-cpp-python](https://github.com/abetlen/llama-cpp-python)** for inference, and **[Rich](https://github.com/Textualize/rich)** for a **user-friendly console chat interface**.
 
 [![Console](https://img.shields.io/badge/made%20with-uv-ff69b4.svg)]
 
@@ -14,18 +14,20 @@ A **lightweight, self-contained** Python project for running a local large langu
 ##  **Features**
 - **Out-of-the-box experience**: Just run `run_app.bat` to install dependencies and start chatting.
 - **Minimal dependencies**: Uses **[UV](https://github.com/astral-sh/uv)** for fast dependency resolution and virtual environment management.
+- **Select 1 of 3 LLMs to chat to**: On startup select one of 3 custom llms presets to use and talk to.
 - **Rich console UI**: Interactive chat interface with syntax highlighting and formatted responses.
 - **Configurable LLM settings**: Adjust temperature, top-p, max tokens, and system prompt via `chat.py`.
 - **Self-contained model**: Includes the TinyLlama GGUF model file for immediate use.
 
 ---
 
-## 📦 **Project Structure**
+##  **Project Structure**
 ```bash
 local-llm-system/
 ├── .venv/                  # Python virtual environment (auto-created)
 ├── app/
 │   ├── llm/
+│   │   ├── agents.json     # This is where the agent personalities are defined
 │   │   ├── chat.py         # Handles the chat UI and LLM configuration
 │   │   └── engine.py       # Loads the LLM model and sets inference parameters
 │   ├── models/             # Contains the GGUF model file
@@ -133,27 +135,24 @@ TinyLlama for the model.
 The .venv directory is auto-created by uv sync.
 The uv.lock file ensures reproducible dependency resolution.
 
-📸 Screenshots
-[![Console](https://img.shields.io/badge/made%20with-uv-ff69b4.svg)]
+## Screenshots
 
-Chat Interface:
-Chat Interface
-Model Loading:
-Model Loading
+# Select LLM Personality:
+![LLM Response](app/screenshots/select.png)
+
+# Chat Interface:
+![LLM Response](app/screenshots/empty_chat.png)
+
+# Model Loading:
+![LLM Response](app/screenshots/typing.png)
+
+# Model Response:
+![LLM Response](app/screenshots/response.png)
+
 
 # Download
-[![Download the latest release](https://img.shields.io/badge/made%20with-uv-ff69b4.svg)](https://github.com/CosmonautCode/Tiny-Local-LLM-System)
+[![Download the latest release]](https://github.com/CosmonautCode/Tiny-Local-LLM-System)
 
 
 ## ⭐ Star this repo if you found it useful!
-
-
-
----
-
-### **How to Use This README**
-1. **Replace Placeholder Images**: Upload screenshots of your application and replace the placeholder image URLs.
-2. **Update Links**: Replace `yourusername` in the GitHub links with your actual GitHub username.
-3. **Add Badges**: Customize the badges at the top to reflect your project’s status, license, and dependencies.
-4. **Copy to GitHub**: Copy this markdown into your GitHub repository’s `README.md` file.
 
