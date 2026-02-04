@@ -5,7 +5,7 @@
 [![Status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://github.com/yourusername/local-llm-system)
 [![Made with UV](https://img.shields.io/badge/made%20with-uv-ff69b4.svg)](https://github.com/astral-sh/uv)
 
-A **lightweight, self-contained** Python project for running custom local large language model (LLM) personalities with minimal dependencies. This system uses **[TinyLlama-1.1B-Chat-v1.0.0](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0.0-GGUF)** and **[llama-cpp-python](https://github.com/abetlen/llama-cpp-python)** for inference, and **[Rich](https://github.com/Textualize/rich)** for a **user-friendly console chat interface**. This is a expansion of **[Tiny-Local-llm](https://github.com/CosmonautCode/Tiny-Local-LLM-System)**.
+A **lightweight, self-contained** Python project for running custom local large language model (LLM) personalities with minimal dependencies. This system uses **[TinyLlama-1.1B-Chat-v1.0.0](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0.0-GGUF)** and **[llama-cpp-python](https://github.com/abetlen/llama-cpp-python)** for inference, and **[Rich](https://github.com/Textualize/rich)** for a **user-friendly console chat interface**. This is a expansion of **[Tiny-Local-llm](https://github.com/CosmonautCode/Tiny-Local-LLM-System)** which allows you to select from 1 of 3 basic personalities. Once selected, you can then chat to that agent.
 
 ![LLM Response](app/screenshots/response.png)
 
