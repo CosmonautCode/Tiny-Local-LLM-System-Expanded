@@ -1,8 +1,7 @@
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
-from rich.live import Live
-import time
+from rich.status import Status
 import json
 
 from pathlib import Path
@@ -52,7 +51,7 @@ class ChatSystem:
 
     def chat_display(self):
         console.clear()
-        console.rule("[bold blue] Tiny Local LLM Chat [/bold blue]", style="bold blue")
+        console.rule("[bold blue] Tiny Local LLM Chat Expanded[/bold blue]", style="bold blue")
 
         console.print(Panel.fit(
             "[bold green]Local LLM ready![/bold green]\n Type [bold yellow] 'exit' [/bold yellow] to quit",
@@ -74,12 +73,14 @@ class ChatSystem:
 
             self.history.append(("user", user_input))
 
-            with Live(Panel("LLM is typing...", border_style="magenta"), refresh_per_second=4, console=console) as live:
-                time.sleep(0.3)
+            messages = [{"role": "system", "content": self.system_prompt}]
+            messages += [{"role": role, "content": text} for role, text in self.history]
 
-                messages = [{"role": "system", "content": self.system_prompt}]
-                messages += [{"role": role, "content": text} for role, text in self.history]
-
+            with console.status(
+                "[bold magenta]LLM is typing...[/bold magenta]",
+                spinner="dots"
+            ):
+                
                 output = self.llm.create_chat_completion(
                     messages=messages,
                     max_tokens=1028,
@@ -88,19 +89,18 @@ class ChatSystem:
                     repeat_penalty=1.15,
                 )
 
-                response = output["choices"][0]["message"]["content"].strip()
-                self.history.append(("assistant", response))
+            response = output["choices"][0]["message"]["content"].strip()
+            self.history.append(("assistant", response))
 
-                # Keep history concise
-                if len(self.history) > MAX_HISTORY:
-                    self.history = self.history[-MAX_HISTORY:]
 
-                live.update(
-                    Panel(
-                        Text(response, style="bold magenta"),
-                        title = "[bold green]LLM[/bold green]",
-                        border_style="cyan"
-                    )
+            # Keep history concise
+            if len(self.history) > MAX_HISTORY:
+                self.history = self.history[-MAX_HISTORY:]
+
+            console.print(
+                Panel(
+                    Text(response, style="bold magenta"),
+                    title="[bold green]LLM[/bold green]",
+                    border_style="cyan"
                 )
-                time.sleep(0.1)
-
+            )
