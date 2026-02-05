@@ -95,7 +95,7 @@ class ChatSystem:
 
             # Keep history concise
             if len(self.history) > MAX_HISTORY:
-                self.history = self.history[-MAX_HISTORY:]
+                del self.history[:-MAX_HISTORY]
 
             console.print(
                 Panel(
